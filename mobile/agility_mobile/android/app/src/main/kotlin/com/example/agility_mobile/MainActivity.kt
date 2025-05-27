@@ -1,4 +1,4 @@
-package com.example.agility_mobile
+package com.pampa.agilityforex
 
 import io.flutter.embedding.android.FlutterActivity
 
