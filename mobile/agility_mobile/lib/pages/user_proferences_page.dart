@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/user_preferences.dart';
 import '../themes/theme_provider.dart';
-import '../utils/app_colors.dart';
 
 class UserPreferencesPage extends StatefulWidget {
   const UserPreferencesPage({super.key});
@@ -45,16 +43,6 @@ class _UserPreferencesPageState extends State<UserPreferencesPage> {
               },
             ),
           ],
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: greenButtonColor),
-          onPressed: () {
-            showCupertinoModalPopup(
-              context: context,
-              builder: (_) => const LanguageSelector(),
-            );
-          },
-          child: Text('Change Language'),
         ),
       ],
     );

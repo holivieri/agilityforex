@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const Color darkBackground = Color.fromRGBO(18, 18, 18, 1);
 const Color darkControlColor = Color.fromRGBO(50, 50, 50, 1);
-final Color brightControlColor = Colors.white.withOpacity(0.4);
+final Color brightControlColor = Colors.white.withValues(alpha: 0.4);
 
 const Color greenButtonColor = Color.fromRGBO(0, 183, 172, 1);
 const Color iconSelectedColor = Color.fromRGBO(0, 183, 172, 1);

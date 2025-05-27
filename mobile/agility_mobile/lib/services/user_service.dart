@@ -37,24 +37,6 @@ class UserService {
     }
   }
 
-  Future<bool> createNewUserProfile(UserProfileRequest userProfile) async {
-    final apiResponse = await _client.post(
-      Uri.parse('$apiUrl/User/CreateProfile'),
-      headers: returnHttpHeaders(),
-      body: jsonEncode(userProfile),
-    );
-
-    if (apiResponse.statusCode != 200) {
-      assert(
-        apiResponse.statusCode == 200,
-        'CreateProfile endpoint is NOT working',
-      );
-      return false;
-    }
-    UserPreferences().profile = MyProfile.employee;
-    return true;
-  }
-
   Future<dynamic> login(String userName, String password) async {
     final deviceToken = UserPreferences().deviceToken;
     final platform = UserPreferences().platform;

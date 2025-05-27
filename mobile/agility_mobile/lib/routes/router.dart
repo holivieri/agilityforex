@@ -1,3 +1,4 @@
+import 'package:agility_mobile/main.dart';
 import 'package:agility_mobile/models/user_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -5,8 +6,6 @@ import 'package:go_router/go_router.dart';
 import '../pages/error_page.dart';
 import '../pages/home_page.dart';
 import '../pages/login_page.dart';
-import '../pages/notification_detail_page.dart';
-import '../pages/notifications_page.dart';
 import '../pages/user_proferences_page.dart';
 import 'routes.dart';
 
@@ -23,19 +22,6 @@ mixin RouterMixin on State<MyApp> {
           name: Routes.loginRoute,
           path: '/login',
           builder: (_, __) => const LoginPage(),
-        ),
-        GoRoute(
-          name: Routes.notificationsRoute,
-          path: '/notifications',
-          builder: (_, __) => const NotificationsPage(),
-        ),
-        GoRoute(
-          path: '/NotificationDetail/:id',
-          name: Routes.notificationDetailsRoute,
-          builder:
-              (_, state) => NotificationDetailPage(
-                notificationId: state.pathParameters['id']!,
-              ),
         ),
         GoRoute(
           name: Routes.userPreferencesRoute,

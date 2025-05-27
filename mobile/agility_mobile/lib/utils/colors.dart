@@ -26,10 +26,7 @@ const themeDanger = Color.fromRGBO(216, 2, 66, 1);
 const highlightGradient = LinearGradient(
   begin: Alignment.topRight,
   end: Alignment.bottomLeft,
-  colors: [
-    themeHighlightGreen,
-    themeHighlightBlue,
-  ],
+  colors: [themeHighlightGreen, themeHighlightBlue],
 );
 
 //background
@@ -39,25 +36,19 @@ const gradientColor2 = themeLightBlue;
 const themeBackgroundGradient = LinearGradient(
   begin: Alignment.topRight,
   end: Alignment.bottomLeft,
-  colors: [
-    gradientColor1,
-    gradientColor2,
-  ],
+  colors: [gradientColor1, gradientColor2],
 );
 
 //////////////////
 const errorRed = Color.fromRGBO(216, 2, 66, 1);
 const themeRed = Color.fromRGBO(229, 0, 0, 1);
 
-final Color whiteOpacity = Colors.white.withOpacity(0.3);
+final Color whiteOpacity = Colors.white.withValues(alpha: 0.3);
 
 const disabledColorLightenedAmount = .25;
 
 ///Darkens a given color by the specified amount
-Color darken({
-  required Color color,
-  required double amountToDarken,
-}) {
+Color darken({required Color color, required double amountToDarken}) {
   assert(
     amountToDarken > 0 && amountToDarken <= 1,
     'amountToDarken value is not valid',
@@ -72,10 +63,7 @@ Color darken({
 }
 
 ///Lightens a given color by the specified amount
-Color lighten({
-  required Color color,
-  required double amountToLighten,
-}) {
+Color lighten({required Color color, required double amountToLighten}) {
   assert(
     amountToLighten > 0 && amountToLighten <= 1,
     'amountToLighten value is not valid',

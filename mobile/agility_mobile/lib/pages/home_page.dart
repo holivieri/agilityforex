@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import '../models/user_preferences.dart';
 import 'home_screen.dart';
-import 'notifications_page.dart';
 import 'user_proferences_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   final tabs = [
     const HomeScreen(),
     const RecommendationsPage(),
-    const NotificationsPage(),
+    //const NotificationsPage(),
     const UserPreferencesPage(),
   ];
 
