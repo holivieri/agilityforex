@@ -1,16 +1,35 @@
-# agility_mobile
+# Agility Forex project
 
-A new Flutter project.
+
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Architecture
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Localization
+
+### How to use localization
+
+## How to test your app
+We are using _Mockito_ to mock the objects that you don't need to test.
+For running the tests you will need to run:
+
+```
+flutter pub run build_runner build //this will create the mock files
+
+flutter test --coverage
+```
+
+## DevOps
+I added an _Azure Build Pipeline yaml file_ for **Android** and **IOS**. 
+
+## Support
+
+
+
+
+
+
