@@ -1,60 +1,80 @@
+import 'dart:io';
+
+import 'package:agility_mobile/app.dart';
+import 'package:agility_mobile/blocs/users/users_bloc.dart';
+import 'package:agility_mobile/models/user_preferences.dart';
+import 'package:agility_mobile/repositories/user_repository.dart';
+import 'package:agility_mobile/services/user_service.dart';
+import 'package:agility_mobile/themes/theme_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
-import 'models/user_preferences.dart';
-import 'routes/router.dart';
-import 'routes/routes.dart';
-import 'themes/theme_provider.dart';
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
+bool platformIsNotWeb() {
+  return !kIsWeb;
 }
 
-class _MyAppState extends State<MyApp> with RouterMixin {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-  final GlobalKey<ScaffoldMessengerState> messengerKey =
-      GlobalKey<ScaffoldMessengerState>();
+Future<void> main() async {
+  final UserService userService = UserService(Client());
+  // final NotificationsService notificationsService = NotificationsService(
+  //   Client(),
+  // );
+  final UserRepository userRepository = UserRepository(userService);
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  // final NotificationsRespository notificationsRepository =
+  //     NotificationsRespository(notificationsService);
 
-  String getInitialRoute() {
-    final token = UserPreferences().deviceToken;
-    final tokenExpirationDate = UserPreferences().tokenExpirationDate;
+  final userPreferences = UserPreferences();
+  await userPreferences.init();
 
-    if (token.isEmpty || tokenExpirationDate.isEmpty) {
-      //return Routes.loginRoute;
-      return Routes.homeRoute;
-    }
-    if (DateTime.parse(UserPreferences().tokenExpirationDate).toUtc()
-    // .subtract(const Duration(days: 30))
-    .isBefore(DateTime.now().toUtc())) {
-      //token is expired
-      //return Routes.loginRoute;
-      return Routes.homeRoute;
-    } else {
-      return Routes.homeRoute;
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //await PushNotificationsService.initializeApp();
+
+  if (kIsWeb) {
+    UserPreferences().platform = 'web';
+  } else {
+    if (Platform.isAndroid) {
+      UserPreferences().platform = 'android';
+    } else if (Platform.isIOS) {
+      UserPreferences().platform = 'ios';
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    return MaterialApp.router(
-      routerConfig: myRouter,
-      scaffoldMessengerKey: messengerKey,
-      debugShowCheckedModeBanner: false,
-      themeMode: themeProvider.themeMode,
-      theme:
-          UserPreferences().isDarkModeOn
-              ? MyThemes.darkTheme
-              : MyThemes.lightTheme,
-      darkTheme: MyThemes.darkTheme,
-    );
-  }
+  // setPathUrlStrategy(); //to remove # from url
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<UsersBloc>(
+          create:
+              (BuildContext context) =>
+                  UsersBloc(userRepository)..add(InitializeUser()),
+        ),
+        // BlocProvider<NotificationsBloc>(
+        //   create:
+        //       (BuildContext context) =>
+        //           NotificationsBloc(notificationsRepository)
+        //             ..add(GettingUserNotifications()),
+        // ),
+      ],
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
+          // ChangeNotifierProvider<LanguageProvider>(
+          //   create: (_) => LanguageProvider(),
+          // ),
+        ],
+        child: GestureDetector(
+          onTap: () {
+            //to minimize the keyboard when tapping outside of a Textfield.
+            //Can move to MyApp to implement in the entire app
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: MyApp(),
+        ),
+      ),
+    ),
+  );
 }

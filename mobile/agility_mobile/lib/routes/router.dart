@@ -1,4 +1,4 @@
-import 'package:agility_mobile/main.dart';
+import 'package:agility_mobile/app.dart';
 import 'package:agility_mobile/models/user_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
