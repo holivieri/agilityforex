@@ -138,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget getLogo() {
-    return Image.asset('assets/images/Logo_small.png', width: 300, height: 300);
+    return Image.asset('assets/images/logo.png', width: 300, height: 300);
   }
 
   Widget getErrorMessage(String error) {

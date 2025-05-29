@@ -18,10 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          getHeaderBar(),
-          const SizedBox(height: 40),
-        ],
+        children: [getHeaderBar(), const SizedBox(height: 40)],
       ),
     );
   }
@@ -36,10 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Hero(
             tag: 'logoTag',
-            child: Image.asset(
-              'assets/images/Logo_small.png',
-              height: 50,
-            ),
+            child: Image.asset('assets/images/logo.png', height: 50),
           ),
           IconButton(
             onPressed: () {

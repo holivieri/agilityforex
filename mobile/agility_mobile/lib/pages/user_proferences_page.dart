@@ -24,11 +24,7 @@ class _UserPreferencesPageState extends State<UserPreferencesPage> {
       children: [
         Hero(
           tag: 'logoTag',
-          child: Image.asset(
-            'assets/images/Logo_small.png',
-            width: 300,
-            height: 300,
-          ),
+          child: Image.asset('assets/images/logo.png', width: 300, height: 300),
         ),
         const SizedBox(height: 40),
         Row(
