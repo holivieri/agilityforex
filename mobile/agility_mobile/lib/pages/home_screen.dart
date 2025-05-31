@@ -33,7 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Hero(
             tag: 'logoTag',
-            child: Image.asset('assets/images/logo.png', height: 50),
+            child: Image.asset(
+              'assets/common/app-icon-transparent.png',
+              height: 50,
+            ),
           ),
           IconButton(
             onPressed: () {
