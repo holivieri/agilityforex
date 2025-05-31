@@ -33,21 +33,29 @@ dependencies:
 dev_dependencies:
   bloc_test: ^10.0.0
   build_runner: 
-  flutter_launcher_icons: ^0.14.1
+  flutter_launcher_icons: ^0.14.3
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
   integration_test:
     sdk: flutter
 
-flutter_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/images/logo.png"
-  adaptive_icon_background: "assets/images/logo.png"
-  
 flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
+    - assets/common/
+    - assets/android/
+
+flutter_launcher_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/common/app-icon.png"
+  image_path_ios_dark_transparent: "assets/common/app-icon-transparent.png"
+  image_path_android: "assets/android/app-icon-android.png"
+  adaptive_icon_background: "assets/android/app-icon-background.png"
+  adaptive_icon_foreground: "assets/android/app-icon-foreground.png"
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/common/app-icon.png"
