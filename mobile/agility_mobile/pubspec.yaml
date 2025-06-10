@@ -45,8 +45,11 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/
     - assets/common/
     - assets/android/
+    - assets/prod/
+    - assets/stg/
 
 flutter_launcher_icons:
   ios: true
@@ -60,3 +63,37 @@ flutter_launcher_icons:
   web:
     generate: true
     image_path: "assets/common/app-icon.png"
+
+# Flutter Flavorizr
+flavorizr:
+  ide: "vscode"
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+    
+  flavors:
+    stg:
+      app:
+        name: "Agility Forex Stg"
+      android:
+        applicationId: "com.pampa.agilityforex.stg"  
+        icon: "assets/stg/app-icon.png"
+        adaptiveIcon:
+          foreground: "assets/stg/app-icon-foreground.png"
+          background: "assets/android/app-icon-background.png"
+      ios:
+        bundleId: "com.pampa.agilityforex.stg"
+        icon: "assets/stg/app-icon.png"
+
+    prod:
+      app:
+        name: "Agility Forex"
+      android:
+        applicationId: "com.pampa.agilityforex"  
+        icon: "assets/prod/app-icon.png"
+        adaptiveIcon:
+          foreground: "assets/prod/app-icon-foreground.png"
+          background: "assets/android/app-icon-background.png"
+      ios:
+        bundleId: "com.pampa.agilityforex"
+        icon: "assets/prod/app-icon.png"
