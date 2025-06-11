@@ -1,4 +1,6 @@
+import 'package:agility_mobile/env/flavor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../models/user_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,10 +35,16 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Hero(
             tag: 'logoTag',
-            child: Image.asset(
-              'assets/common/app-icon-transparent.png',
-              height: 50,
-            ),
+            child:
+                getFlavor() == Flavor.prod
+                    ? Image.asset(
+                      'assets/prod/app-icon-foreground.png',
+                      height: 50,
+                    )
+                    : Image.asset(
+                      'assets/stg/app-icon-foreground.png',
+                      height: 50,
+                    ),
           ),
           IconButton(
             onPressed: () {
