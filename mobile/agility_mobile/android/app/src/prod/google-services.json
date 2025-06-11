@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "269185512534",
+    "project_id": "agilityforex-bfbd5",
+    "storage_bucket": "agilityforex-bfbd5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269185512534:android:05b9e7cb2328eef28537f7",
+        "android_client_info": {
+          "package_name": "com.pampa.agilityforex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-ihIeSR2qulfJEZ0mhir2PxhtiS3oXYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

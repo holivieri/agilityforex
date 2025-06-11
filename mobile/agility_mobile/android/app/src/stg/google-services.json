@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "871563624588",
+    "project_id": "agilityforex-stg",
+    "storage_bucket": "agilityforex-stg.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871563624588:android:d2470164a661a5804b3ba9",
+        "android_client_info": {
+          "package_name": "com.pampa.agilityforex.stg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTwDMLvO1UVuhqo68xvq0_fwbFVf681wM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
