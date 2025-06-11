@@ -6,6 +6,7 @@ import 'package:agility_mobile/models/user_preferences.dart';
 import 'package:agility_mobile/repositories/user_repository.dart';
 import 'package:agility_mobile/services/user_service.dart';
 import 'package:agility_mobile/themes/theme_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,8 +17,11 @@ bool platformIsNotWeb() {
   return !kIsWeb;
 }
 
-Future<void> main() async {
+Future<void> runMainApp({required FirebaseOptions firebaseOptions}) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   final UserService userService = UserService(Client());
+  await Firebase.initializeApp(options: firebaseOptions);
   // final NotificationsService notificationsService = NotificationsService(
   //   Client(),
   // );
@@ -28,8 +32,6 @@ Future<void> main() async {
 
   final userPreferences = UserPreferences();
   await userPreferences.init();
-
-  WidgetsFlutterBinding.ensureInitialized();
 
   //await PushNotificationsService.initializeApp();
 

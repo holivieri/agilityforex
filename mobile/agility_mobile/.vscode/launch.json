@@ -7,7 +7,7 @@
       "type": "dart",
       "flutterMode": "debug",
       "args": ["--flavor", "stg"],
-      "program": "lib/main.dart"
+      "program": "lib/main_stg.dart"
     },
     {
       "name": "stg Profile",
@@ -15,7 +15,7 @@
       "type": "dart",
       "flutterMode": "profile",
       "args": ["--flavor", "stg"],
-      "program": "lib/main.dart"
+      "program": "lib/main_stg.dart"
     },
     {
       "name": "stg Release",
@@ -23,7 +23,7 @@
       "type": "dart",
       "flutterMode": "release",
       "args": ["--flavor", "stg"],
-      "program": "lib/main.dart"
+      "program": "lib/main_stg.dart"
     },
     {
       "name": "prod Debug",
@@ -31,7 +31,7 @@
       "type": "dart",
       "flutterMode": "debug",
       "args": ["--flavor", "prod"],
-      "program": "lib/main.dart"
+      "program": "lib/main_prod.dart"
     },
     {
       "name": "prod Profile",
@@ -39,7 +39,7 @@
       "type": "dart",
       "flutterMode": "profile",
       "args": ["--flavor", "prod"],
-      "program": "lib/main.dart"
+      "program": "lib/main_prod.dart"
     },
     {
       "name": "prod Release",
@@ -47,7 +47,7 @@
       "type": "dart",
       "flutterMode": "release",
       "args": ["--flavor", "prod"],
-      "program": "lib/main.dart"
+      "program": "lib/main_prod.dart"
     }
   ]
 }
