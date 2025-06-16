@@ -1,4 +1,4 @@
-import 'package:agility_mobile/pages/recommendations_page.dart';
+import 'package:agility_mobile/pages/transactions_page.dart';
 import 'package:agility_mobile/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   final tabs = [
     const HomeScreen(),
-    const RecommendationsPage(),
+    const TransactionsPage(),
     //const NotificationsPage(),
     const UserPreferencesPage(),
   ];
@@ -73,12 +73,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(Icons.newspaper_outlined),
-                    label: 'News',
+                    label: 'Transactions',
                   ),
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.notifications),
-                    label: 'Notifications',
-                  ),
+                  // BottomNavigationBarItem(
+                  //   icon: const Icon(Icons.notifications),
+                  //   label: 'Notifications',
+                  // ),
                   BottomNavigationBarItem(
                     icon: const Icon(Icons.person),
                     label: 'Profile',

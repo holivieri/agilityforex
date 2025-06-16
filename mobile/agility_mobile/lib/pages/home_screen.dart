@@ -1,6 +1,5 @@
 import 'package:agility_mobile/env/flavor.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../models/user_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
