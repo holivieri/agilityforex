@@ -1,3 +1,4 @@
+import 'package:agility_mobile/components/currency_dropdown.dart';
 import 'package:agility_mobile/env/flavor.dart';
 import 'package:flutter/material.dart';
 import '../models/user_preferences.dart';
@@ -17,9 +18,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget mainBody(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [getHeaderBar(), const SizedBox(height: 40)],
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            getHeaderBar(),
+            const SizedBox(height: 40),
+            CurrencyDropdown(labelText: 'Currency I have to sell'),
+            const SizedBox(height: 20),
+            CurrencyDropdown(labelText: 'Currency I need to buy'),
+          ],
+        ),
       ),
     );
   }
@@ -37,11 +47,11 @@ class _HomeScreenState extends State<HomeScreen> {
             child:
                 getFlavor() == Flavor.prod
                     ? Image.asset(
-                      'assets/prod/app-icon-foreground.png',
+                      'assets/prod/app-icon-transparent.png',
                       height: 50,
                     )
                     : Image.asset(
-                      'assets/stg/app-icon-foreground.png',
+                      'assets/stg/app-icon-transparent.png',
                       height: 50,
                     ),
           ),
