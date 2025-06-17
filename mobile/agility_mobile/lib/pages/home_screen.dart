@@ -48,11 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 getFlavor() == Flavor.prod
                     ? Image.asset(
                       'assets/prod/app-icon-transparent.png',
-                      height: 50,
+                      height: 100,
                     )
                     : Image.asset(
                       'assets/stg/app-icon-transparent.png',
-                      height: 50,
+                      height: 100,
                     ),
           ),
           IconButton(
