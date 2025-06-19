@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+
+class AmountTextFormField extends StatelessWidget {
+  final String labelText;
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
+  final TextInputType keyboardType;
+  final bool enabled;
+
+  const AmountTextFormField({
+    super.key,
+    required this.labelText,
+    required this.controller,
+    this.validator,
+    this.keyboardType = TextInputType.text,
+    this.enabled = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      enabled: enabled,
+      validator: validator,
+      keyboardType: keyboardType,
+      decoration: InputDecoration(
+        labelText: labelText,
+        filled: true,
+        fillColor: Colors.white,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      ),
+    );
+  }
+}

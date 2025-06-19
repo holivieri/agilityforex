@@ -1,3 +1,4 @@
+import 'package:agility_mobile/components/amount_textbox.dart';
 import 'package:agility_mobile/components/currency_dropdown.dart';
 import 'package:agility_mobile/env/flavor.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,37 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final TextEditingController controllerSell = TextEditingController();
+  final TextEditingController controllerBuy = TextEditingController();
+  bool isBuyEnabled = true;
+  bool isSellEnabled = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controllerSell.addListener(() {
+      final hasValue = controllerSell.text.trim().isNotEmpty;
+      setState(() {
+        isBuyEnabled = !hasValue;
+      });
+    });
+
+    controllerBuy.addListener(() {
+      final hasValue = controllerBuy.text.trim().isNotEmpty;
+      setState(() {
+        isSellEnabled = !hasValue;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    controllerSell.dispose();
+    controllerBuy.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return mainBody(context);
@@ -26,8 +58,20 @@ class _HomeScreenState extends State<HomeScreen> {
             getHeaderBar(),
             const SizedBox(height: 40),
             CurrencyDropdown(labelText: 'Currency I have to sell'),
+            const SizedBox(height: 10),
+            AmountTextFormField(
+              labelText: 'Amount',
+              controller: controllerSell,
+              enabled: isSellEnabled,
+            ),
             const SizedBox(height: 20),
             CurrencyDropdown(labelText: 'Currency I need to buy'),
+            const SizedBox(height: 10),
+            AmountTextFormField(
+              labelText: 'Amount',
+              controller: controllerBuy,
+              enabled: isBuyEnabled,
+            ),
           ],
         ),
       ),
