@@ -1,5 +1,6 @@
 import 'package:agility_mobile/app.dart';
 import 'package:agility_mobile/models/user_preferences.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,6 +18,9 @@ mixin RouterMixin on State<MyApp> {
     _router ??= GoRouter(
       errorBuilder: (_, state) => ErrorPage(goRouterState: state),
       navigatorKey: rootNavigatorKey,
+      observers: [
+        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
+      ],
       routes: [
         GoRoute(
           name: Routes.loginRoute,

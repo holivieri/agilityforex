@@ -1,6 +1,9 @@
+import 'dart:developer' as Console;
+
 import 'package:agility_mobile/components/amount_textbox.dart';
 import 'package:agility_mobile/components/currency_dropdown.dart';
 import 'package:agility_mobile/env/flavor.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import '../models/user_preferences.dart';
 
@@ -72,9 +75,44 @@ class _HomeScreenState extends State<HomeScreen> {
               controller: controllerBuy,
               enabled: isBuyEnabled,
             ),
+            const SizedBox(height: 40),
+            getQuoteButton(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget getQuoteButton() {
+    return TextButton(
+      style: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
+        overlayColor: WidgetStateProperty.resolveWith<Color?>((
+          Set<WidgetState> states,
+        ) {
+          if (states.contains(WidgetState.hovered)) {
+            return Colors.blue.withOpacity(0.04);
+          }
+          if (states.contains(WidgetState.focused) ||
+              states.contains(WidgetState.pressed)) {
+            return Colors.blue.withOpacity(0.12);
+          }
+          return null; // Defer to the widget's default.
+        }),
+      ),
+      onPressed: () {
+        Console.log('disparo el evento currency_echange');
+        FirebaseAnalytics.instance.logEvent(
+          name: 'currency_exchange',
+          parameters: {
+            'from_currency': 'USD',
+            'to_currency': 'CAD',
+            'amount': 1000,
+            'rate': 1.35,
+          },
+        );
+      },
+      child: Text('Get Quote'),
     );
   }
 

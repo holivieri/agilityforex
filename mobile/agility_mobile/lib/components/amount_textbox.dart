@@ -23,10 +23,25 @@ class AmountTextFormField extends StatelessWidget {
       enabled: enabled,
       validator: validator,
       keyboardType: keyboardType,
+      style: TextStyle(
+        color:
+            Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : Colors.black,
+      ),
       decoration: InputDecoration(
         labelText: labelText,
+        labelStyle: TextStyle(
+          color:
+              Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white70
+                  : Colors.grey[800],
+        ),
         filled: true,
-        fillColor: Colors.white,
+        fillColor:
+            Theme.of(context).brightness == Brightness.dark
+                ? Colors.grey[900]
+                : Colors.white,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       ),
