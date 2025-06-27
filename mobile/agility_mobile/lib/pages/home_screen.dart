@@ -60,20 +60,32 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             getHeaderBar(),
             const SizedBox(height: 40),
-            CurrencyDropdown(labelText: 'Currency I have to sell'),
+            Semantics(
+              identifier: 'currency-to-sell',
+              child: CurrencyDropdown(labelText: 'Currency I have to sell'),
+            ),
             const SizedBox(height: 10),
-            AmountTextFormField(
-              labelText: 'Amount',
-              controller: controllerSell,
-              enabled: isSellEnabled,
+            Semantics(
+              identifier: 'amount-to-sell',
+              child: AmountTextFormField(
+                labelText: 'Amount',
+                controller: controllerSell,
+                enabled: isSellEnabled,
+              ),
             ),
             const SizedBox(height: 20),
-            CurrencyDropdown(labelText: 'Currency I need to buy'),
+            Semantics(
+              identifier: 'currency-to-buy',
+              child: CurrencyDropdown(labelText: 'Currency I need to buy'),
+            ),
             const SizedBox(height: 10),
-            AmountTextFormField(
-              labelText: 'Amount',
-              controller: controllerBuy,
-              enabled: isBuyEnabled,
+            Semantics(
+              identifier: 'amount-to-buy',
+              child: AmountTextFormField(
+                labelText: 'Amount',
+                controller: controllerBuy,
+                enabled: isBuyEnabled,
+              ),
             ),
             const SizedBox(height: 40),
             getQuoteButton(),
@@ -84,35 +96,38 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget getQuoteButton() {
-    return TextButton(
-      style: ButtonStyle(
-        foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-        overlayColor: WidgetStateProperty.resolveWith<Color?>((
-          Set<WidgetState> states,
-        ) {
-          if (states.contains(WidgetState.hovered)) {
-            return Colors.blue.withOpacity(0.04);
-          }
-          if (states.contains(WidgetState.focused) ||
-              states.contains(WidgetState.pressed)) {
-            return Colors.blue.withOpacity(0.12);
-          }
-          return null; // Defer to the widget's default.
-        }),
+    return Semantics(
+      identifier: 'btn-get-qoute',
+      child: TextButton(
+        style: ButtonStyle(
+          foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
+          overlayColor: WidgetStateProperty.resolveWith<Color?>((
+            Set<WidgetState> states,
+          ) {
+            if (states.contains(WidgetState.hovered)) {
+              return Colors.blue.withOpacity(0.04);
+            }
+            if (states.contains(WidgetState.focused) ||
+                states.contains(WidgetState.pressed)) {
+              return Colors.blue.withOpacity(0.12);
+            }
+            return null; // Defer to the widget's default.
+          }),
+        ),
+        onPressed: () {
+          Console.log('disparo el evento currency_echange');
+          FirebaseAnalytics.instance.logEvent(
+            name: 'currency_exchange',
+            parameters: {
+              'from_currency': 'USD',
+              'to_currency': 'CAD',
+              'amount': 1000,
+              'rate': 1.35,
+            },
+          );
+        },
+        child: Text('Get Quote'),
       ),
-      onPressed: () {
-        Console.log('disparo el evento currency_echange');
-        FirebaseAnalytics.instance.logEvent(
-          name: 'currency_exchange',
-          parameters: {
-            'from_currency': 'USD',
-            'to_currency': 'CAD',
-            'amount': 1000,
-            'rate': 1.35,
-          },
-        );
-      },
-      child: Text('Get Quote'),
     );
   }
 

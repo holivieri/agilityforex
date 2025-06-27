@@ -23,6 +23,12 @@ flutter pub run build_runner build //this will create the mock files
 flutter test --coverage
 ```
 
+## Testing and Screenshot with Maestro
+
+use this command line
+``maestro test -e EMAIL=hernan@gmail.com -e PASSWORD=12345678  maestro/flow.yaml --output ./screenshots``
+
+
 ## DevOps
 I added an _Azure Build Pipeline yaml file_ for **Android** and **IOS**. 
 

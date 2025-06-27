@@ -1,0 +1,28 @@
+# exchange.yaml
+
+appId: com.pampa.agilityforex.stg
+name: Exchange Flow - Flutter Screenshots
+
+---
+- launchApp:
+    clearState: true
+- takeScreenshot:
+    path: screenshots/1_applaunch
+    
+
+- tapOn:
+    id: "currency-to-sell"
+    label: "Tap on Currency I need to sell"
+- inputText: ${SELLCURRENCY}
+  
+- tapOn:
+    id: "amount-to-sell"
+    label: "Tap on Amount to sell"
+- inputText: ${AMOUNTTOSELL}
+- takeScreenshot: 
+    path: screenshots/2_enteramount
+
+- tapOn: 
+    id: 'btn-get-qoute'
+- takeScreenshot: 
+    path: screenshots/3_login_complete
