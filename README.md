@@ -26,7 +26,7 @@ flutter test --coverage
 ## Testing and Screenshot with Maestro
 
 use this command line
-``maestro test -e EMAIL=hernan@gmail.com -e PASSWORD=12345678  maestro/flow.yaml --output ./screenshots``
+``maestro test -e SELLCURRENCY=USD -e AMOUNTTOSELL=8500  maestro/exchange.yaml --output ./screenshots``
 
 
 ## DevOps

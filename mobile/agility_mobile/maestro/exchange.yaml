@@ -13,7 +13,8 @@ name: Exchange Flow - Flutter Screenshots
 - tapOn:
     id: "currency-to-sell"
     label: "Tap on Currency I need to sell"
-- inputText: ${SELLCURRENCY}
+- tapOn: "USD"
+
   
 - tapOn:
     id: "amount-to-sell"
@@ -21,6 +22,12 @@ name: Exchange Flow - Flutter Screenshots
 - inputText: ${AMOUNTTOSELL}
 - takeScreenshot: 
     path: screenshots/2_enteramount
+
+- tapOn:
+    id: "currency-to-Buy"
+    label: "Tap on Currency I need to buy"
+- tapOn: "EUR"
+
 
 - tapOn: 
     id: 'btn-get-qoute'
